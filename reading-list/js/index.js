@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   submitForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     addBook();
 
     document.getElementById("book-title").value = "";
@@ -38,6 +38,7 @@ document.addEventListener(RENDER_EVENT, () => {
 
 document.addEventListener(SAVED_EVENT, () => {
   console.log(localStorage.getItem(STORAGE_KEY));
+  showSavedToast()
   // add featur here
 });
 
@@ -192,4 +193,25 @@ function loadDataFromStorage() {
   }
 
   document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function showSavedToast() {
+    var toastElement = document.createElement('div');
+    toastElement.classList.add('toast');
+    toastElement.textContent = 'Data Saved';
+
+    var toastContainer = document.getElementById('toast-container');
+    toastContainer.appendChild(toastElement);
+
+    setTimeout(function() {
+        toastElement.classList.add('fade-out');
+        setTimeout(function() {
+            toastElement.remove();
+        }, 300);
+    }, 3000);
+
+    var toasts = toastContainer.getElementsByClassName('toast');
+    if (toasts.length > 3) {
+        toasts[0].remove();
+    }
 }
