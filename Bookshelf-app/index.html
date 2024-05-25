@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookShelf App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="app-title">BookShelf</div>
+    <div class="container">
+        <div class="widgets">
+            <div class="progress-bar">progress bar</div>
+            <div class="counter-bar">
+                <div class="unread-count">
+                    <h3>Unread Book:</h3>
+                    <div class="unread-total">0</div>
+                </div>
+                <div class="readed-count">
+                    <h3>Readed Book:</h3>
+                    <div class="unread-total">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="bookshelf">
+            <div class="form">
+                <form action="#" id="book-form">
+                    <div class="input-field">
+                        <label for="book-title">Judul</label>
+                        <input type="text" id="book-title" name="book-title" autocomplete="off" required />
+                    </div>
+                    <div class="input-field">
+                        <label for="book-author">Penulis</label>
+                        <input type="text" id="book-author" name="book-author" autocomplete="off" required />
+                    </div>
+                    <div class="input-field">
+                        <label for="book-year">Tahun</label>
+                        <input type="number" id="book-year" name="book-year" autocomplete="off" required step="1" />
+                    </div>
+
+                    <div class="checkbox-field">
+                        <input type="checkbox" name="book-check" id="book-check" />
+                        <label for="book-check" >Selesai dibaca</label>
+                    </div>
+
+                    <button type="submit">Add Book</button>
+                </form>
+            </div>
+            <div class="unread-book">
+                <div class="navbar">
+                    <div class="title">Belum selesai dibaca</div>
+                    <div class="search-bar">
+                        <input type="text" id="unread-search" placeholder="Masukan judul buku..." />
+                    </div>
+                </div>
+                <div class="unread-card-container"></div>
+            </div>
+            <div class="readed-book">
+                <div class="navbar">
+                    <div class="title">Selesai dibaca</div>
+                    <div class="search-bar">
+                        <input type="text" id="readed-search" placeholder="Masukan judul buku..." />
+                    </div>
+                </div>
+                <div class="readed-card-container"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

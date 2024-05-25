@@ -1,0 +1,165 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Warna latar belakang untuk seluruh halaman */
+}
+
+/* Styling App Title */
+.app-title {
+    padding: 20px;
+    background-color: #6c5ce7; /* Warna latar belakang judul aplikasi */
+    color: #fff; /* Warna teks judul */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Styling Container */
+.container {
+    max-width: 100%; /* Lebar maksimum kontainer */
+    margin: 0 auto; /* Posisi tengah kontainer */
+    padding: 20px;
+}
+
+/* Styling Widgets */
+.widgets {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.progress-bar, .counter-bar {
+    flex: 1; /* Bagi ruang secara merata */
+    border: 1px solid #dee2e6; /* Border abu-abu */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.progress-bar {
+    position: relative; /* Penempatan relatif */
+    overflow: hidden; /* Menghilangkan overflow */
+}
+
+.progress-bar::before {
+    content: ''; /* Isi kosong */
+    position: absolute; /* Penempatan absolut */
+    top: 0;
+    left: 0;
+    width: 50%; /* Lebar progress */
+    height: 100%;
+    background-color: #6c5ce7; /* Warna latar belakang progress */
+}
+
+.counter-bar {
+    display: flex; /* Tampilan fleksibel */
+    justify-content: space-around; /* Penyebaran ruang secara merata */
+    align-items: center; /* Penyelarasan item */
+    gap: 20px;
+}
+
+/* Styling Unread dan Readed Count */
+.unread-count, .readed-count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center; /* Penyelarasan teks ke tengah */
+}
+
+.unread-count h3, .readed-count h3, .unread-total, .readed-total, .navbar .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+ 
+.navbar {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.bookshelf, .navbar{
+    display: flex;
+    gap: 20px;
+}
+.form, .unread-book, .readed-book {
+    flex-grow: 1;
+}
+
+/* Styling Form */
+.form {
+    border: 1px solid #dee2e6; /* Border abu-abu */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.input-field {
+    margin-bottom: 15px;
+}
+
+.input-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-field input[type="text"],
+.input-field input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da; /* Border abu-abu */
+    border-radius: 5px; /* Sudut melengkung */
+}
+
+.checkbox-field {
+    display: flex; /* Tampilan fleksibel */
+    align-items: center; /* Penyelarasan item */
+    margin-bottom: 20px;
+}
+
+.checkbox-field input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #6c5ce7; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    border: none;
+    border-radius: 5px; /* Sudut melengkung */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transisi warna latar belakang saat dihover */
+    float: right;
+}
+
+button[type="submit"]:hover {
+    background-color: #5245c9; /* Warna latar belakang saat dihover */
+}
+
+/* Styling Search Bar */
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da; /* Border abu-abu */
+    border-radius: 5px; /* Sudut melengkung */
+}
+
+/* Styling Card Container */
+.unread-card-container, .readed-card-container {
+    border: 1px solid #dee2e6; /* Border abu-abu */
+    border-radius: 10px; /* Sudut melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+    padding: 20px;
+}
+
+.unread-card-container {
+    margin-bottom: 20px;
+}
