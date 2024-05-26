@@ -7,96 +7,176 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Warna latar belakang untuk seluruh halaman */
+    background-color: #f8f9fa;
+    overflow: hidden;
+    /* Prevent scrolling */
+    height: 100vh;
+    /* Ensure body takes full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Styling App Title */
 .app-title {
     padding: 20px;
-    background-color: #6c5ce7; /* Warna latar belakang judul aplikasi */
-    color: #fff; /* Warna teks judul */
+    background-color: #6c5ce7;
+    color: #fff;
     font-size: 24px;
     font-weight: bold;
+    flex-shrink: 0;
+    /* Prevent from shrinking */
 }
 
-/* Styling Container */
 .container {
-    max-width: 100%; /* Lebar maksimum kontainer */
-    margin: 0 auto; /* Posisi tengah kontainer */
+    flex: 1;
+    /* Allow container to grow and fill remaining space */
     padding: 20px;
-}
-
-/* Styling Widgets */
-.widgets {
     display: flex;
-    margin-bottom: 20px;
+    flex-direction: column;
+    overflow: hidden;
+    /* Prevent overflowing */
 }
 
-.progress-bar, .counter-bar {
-    flex: 1; /* Bagi ruang secara merata */
-    border: 1px solid #dee2e6; /* Border abu-abu */
-    border-radius: 10px; /* Sudut melengkung */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+.progress-bar-container, .counter-bar {
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin-right: 10px;
+    position: relative;
 }
 
+/* progress-bar */
 .progress-bar {
-    position: relative; /* Penempatan relatif */
-    overflow: hidden; /* Menghilangkan overflow */
+    width: 100%;
+    max-width: 200px;
+    font-family: "Roboto", sans-serif;
+    font-size: 32px;
+    color: #6c5ce7;
 }
 
-.progress-bar::before {
-    content: ''; /* Isi kosong */
-    position: absolute; /* Penempatan absolut */
-    top: 0;
+.bar-body {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background: #b4c0be;
+    position: relative;
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%;
+    overflow: hidden;
+}
+
+.bar-fill {
+    position: absolute;
+    top: 100%;
     left: 0;
-    width: 50%; /* Lebar progress */
+    width: inherit;
     height: 100%;
-    background-color: #6c5ce7; /* Warna latar belakang progress */
+    background: #6c5ce7;
+    transform-origin: center top;
+    transform: rotate(0.25turn);
+    transition: transform 0.2s ease-out;
+}
+
+.bar-cover {
+    width: 75%;
+    height: 150%;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25%;
+    box-sizing: border-box;
+}
+
+.widgets {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.progress-bar-container {
+    position: relative;
+    width: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.progress-bar-container .title{
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .counter-bar {
-    display: flex; /* Tampilan fleksibel */
-    justify-content: space-around; /* Penyebaran ruang secara merata */
-    align-items: center; /* Penyelarasan item */
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
     gap: 20px;
 }
 
-/* Styling Unread dan Readed Count */
-.unread-count, .readed-count {
+.unread-count,
+.readed-count, .total-count {
     display: flex;
     align-items: center;
     gap: 10px;
-    text-align: center; /* Penyelarasan teks ke tengah */
+    text-align: center;
 }
 
-.unread-count h3, .readed-count h3, .unread-total, .readed-total, .navbar .title {
+.unread-count h3,
+.readed-count h3,
+.total-count h3,
+.total-book,
+.unread-total,
+.readed-total,
+.navbar .title {
     font-size: 18px;
     font-weight: bold;
 }
- 
+
 .navbar {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-}
-.bookshelf, .navbar{
-    display: flex;
-    gap: 20px;
-}
-.form, .unread-book, .readed-book {
-    flex-grow: 1;
+    flex-shrink: 0;
 }
 
-/* Styling Form */
+.bookshelf {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.form,
+.unread-book,
+.readed-book {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
 .form {
-    border: 1px solid #dee2e6; /* Border abu-abu */
-    border-radius: 10px; /* Sudut melengkung */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
-    flex-grow: 1;
+    flex-shrink: 0;
+    height: 340px;
 }
 
 .input-field {
@@ -113,13 +193,13 @@ body {
 .input-field input[type="number"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ced4da; /* Border abu-abu */
-    border-radius: 5px; /* Sudut melengkung */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }
 
 .checkbox-field {
-    display: flex; /* Tampilan fleksibel */
-    align-items: center; /* Penyelarasan item */
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -129,37 +209,210 @@ body {
 
 button[type="submit"] {
     padding: 10px 20px;
-    background-color: #6c5ce7; /* Warna latar belakang tombol */
-    color: #fff; /* Warna teks tombol */
+    background-color: #6c5ce7;
+    color: #fff;
     border: none;
-    border-radius: 5px; /* Sudut melengkung */
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: background-color 0.3s ease; /* Transisi warna latar belakang saat dihover */
+    transition: background-color 0.3s ease;
     float: right;
 }
 
 button[type="submit"]:hover {
-    background-color: #5245c9; /* Warna latar belakang saat dihover */
+    background-color: #5245c9;
 }
 
-/* Styling Search Bar */
 .search-bar input[type="text"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ced4da; /* Border abu-abu */
-    border-radius: 5px; /* Sudut melengkung */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }
 
-/* Styling Card Container */
-.unread-card-container, .readed-card-container {
-    border: 1px solid #dee2e6; /* Border abu-abu */
-    border-radius: 10px; /* Sudut melengkung */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow box */
+.unread-card-container,
+.readed-card-container {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    overflow-y: auto;
+    flex: 1;
 }
 
-.unread-card-container {
-    margin-bottom: 20px;
+/* Custom Scrollbar Styling */
+.unread-card-container::-webkit-scrollbar,
+.readed-card-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.unread-card-container::-webkit-scrollbar-track,
+.readed-card-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.unread-card-container::-webkit-scrollbar-thumb,
+.readed-card-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.unread-card-container::-webkit-scrollbar-thumb:hover,
+.readed-card-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox Scrollbar */
+.unread-card-container,
+.readed-card-container {
+    scrollbar-width: thin;
+    scrollbar-color: #6c5ce7 #f1f1f1;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card-text {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.card h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.card p {
+    margin-bottom: 0;
+    color: #6c757d;
+}
+
+.custom-checkbox {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox label {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+label {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* action button */
+.edit-card {
+    width: 30px;
+    height: 30px;
+    background: url('assets/edit-3-svgrepo-com.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-card {
+    width: 30px;
+    height: 30px;
+    background: url('assets/trash-bin-minimalistic-svgrepo-com.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 16px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-card:hover,
+.delete-card:hover {
+    box-shadow: 2px 3px 6px rgba(108, 92, 231, 1);
+}
+
+/* popup persetujuan delete data */
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    z-index: 1000; /* Ensure overlay is on top */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#confirm-button {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+#cancel-button {
+    background-color: grey;
+    color: white;
+    border: none;
 }
