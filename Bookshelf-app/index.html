@@ -12,6 +12,7 @@
     <div class="app-title">BookShelf</div>
     <div class="container">
         <div class="widgets">
+            <!-- progress bar setengah lingkaran -->
             <div class="progress-bar-container">
                 <div class="title">Progress Membaca</div>
                 <div class="progress-bar">
@@ -25,18 +26,20 @@
                     <div class="total-book" id="total-book">0</div>
                 </div>
             </div>
+            <!-- jumlah buku dalam rak -->
             <div class="counter-bar">
                 <div class="unread-count">
-                    <h3>Unread Book:</h3>
+                    <h3>Belum Selesai Dibaca:</h3>
                     <div class="unread-total" id="unread-total">0</div>
                 </div>
                 <div class="readed-count">
-                    <h3>Readed Book:</h3>
+                    <h3>Selesai Dibaca:</h3>
                     <div class="readed-total" id="readed-total">0</div>
                 </div>
             </div>
         </div>
         <div class="bookshelf">
+            <!-- form untuk menambahkan buku ke rak -->
             <div class="form">
                 <form action="#" id="book-form">
                     <div class="input-field">
@@ -54,32 +57,36 @@
 
                     <div class="checkbox-field">
                         <input type="checkbox" name="book-check" id="book-check" />
-                        <label for="book-check" >Selesai dibaca</label>
+                        <label for="book-check">Selesai dibaca</label>
                     </div>
 
                     <button type="submit">Add Book</button>
                 </form>
             </div>
-            <div class="unread-book">
-                <div class="navbar">
-                    <div class="title">Belum selesai dibaca</div>
-                    <div class="search-bar">
-                        <input type="text" id="unread-search" placeholder="Masukan judul buku..." />
+            <!-- rak buku "belum selesai dibaca" dan "selesai dibaca" -->
+            <div class="shelf-wrapper">
+                <div class="unread-book">
+                    <div class="navbar">
+                        <div class="title">Belum selesai dibaca</div>
+                        <div class="search-bar">
+                            <input type="text" id="unread-search" placeholder="Masukan judul buku..." />
+                        </div>
+                    </div>
+                    <div class="unread-card-container" id="unread-card-container">
                     </div>
                 </div>
-                <div class="unread-card-container" id="unread-card-container">
-                </div>
-            </div>
-            <div class="readed-book">
-                <div class="navbar">
-                    <div class="title">Selesai dibaca</div>
-                    <div class="search-bar">
-                        <input type="text" id="readed-search" placeholder="Masukan judul buku..." />
+                <div class="readed-book">
+                    <div class="navbar">
+                        <div class="title">Selesai dibaca</div>
+                        <div class="search-bar">
+                            <input type="text" id="readed-search" placeholder="Masukan judul buku..." />
+                        </div>
+                    </div>
+                    <div class="readed-card-container" id="readed-card-container">
                     </div>
                 </div>
-                <div class="readed-card-container" id="readed-card-container">
-                </div>
             </div>
+
         </div>
     </div>
 
@@ -89,11 +96,13 @@
             <br>
             <div id="confirm-data"></div>
             <br>
-            <p>Are you sure you want to delete this data?</p>
+
             <button id="confirm-button">Yes, Delete</button>
             <button id="cancel-button">Cancel</button>
         </div>
     </div>
+
+    <div id="toast-container" class="toast-container"></div>
 
     <script src="js/script.js"></script>
     <script src="js/style.js"></script>

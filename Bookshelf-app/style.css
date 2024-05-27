@@ -1,137 +1,132 @@
-/* Reset CSS */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    overflow: hidden;
-    /* Prevent scrolling */
-    height: 100vh;
-    /* Ensure body takes full viewport height */
-    display: flex;
-    flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-title {
-    padding: 20px;
-    background-color: #6c5ce7;
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    flex-shrink: 0;
-    /* Prevent from shrinking */
+  padding: 20px;
+  background-color: #6c5ce7;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  flex-shrink: 0;
 }
 
 .container {
-    flex: 1;
-    /* Allow container to grow and fill remaining space */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    /* Prevent overflowing */
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.progress-bar-container, .counter-bar {
-    flex: 1;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin-right: 10px;
-    position: relative;
+.progress-bar-container,
+.counter-bar {
+  flex: 1;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-right: 10px;
+  position: relative;
 }
 
 /* progress-bar */
 .progress-bar {
-    width: 100%;
-    max-width: 200px;
-    font-family: "Roboto", sans-serif;
-    font-size: 32px;
-    color: #6c5ce7;
+  width: 100%;
+  max-width: 200px;
+  font-family: "Roboto", sans-serif;
+  font-size: 32px;
+  color: #6c5ce7;
 }
 
 .bar-body {
-    width: 100%;
-    height: 0;
-    padding-bottom: 50%;
-    background: #b4c0be;
-    position: relative;
-    border-top-left-radius: 100% 200%;
-    border-top-right-radius: 100% 200%;
-    overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: #b4c0be;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
 }
 
 .bar-fill {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: inherit;
-    height: 100%;
-    background: #6c5ce7;
-    transform-origin: center top;
-    transform: rotate(0.25turn);
-    transition: transform 0.2s ease-out;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background: #6c5ce7;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: transform 0.2s ease-out;
 }
 
 .bar-cover {
-    width: 75%;
-    height: 150%;
-    background: #ffffff;
-    border-radius: 50%;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 75%;
+  height: 150%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
 
-    /* Text */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 25%;
-    box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
 }
 
 .widgets {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .progress-bar-container {
-    position: relative;
-    width: 150px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    gap: 70px;
+  position: relative;
+  width: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 70px;
 }
 
-.progress-bar-container .title{
-    font-size: 20px;
-    font-weight: bold;
+.progress-bar-container .title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .counter-bar {
-    display: flex;
-    height: 100%;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
 }
 
 .unread-count,
-.readed-count, .total-count {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
+.readed-count,
+.total-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
 }
 
 .unread-count h3,
@@ -141,278 +136,337 @@ body {
 .unread-total,
 .readed-total,
 .navbar .title {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .navbar {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-shrink: 0;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .bookshelf {
-    display: flex;
-    gap: 20px;
-    flex: 1;
-    overflow: hidden;
-}
-
-.form,
-.unread-book,
-.readed-book {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .form {
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    flex-shrink: 0;
-    height: 340px;
+  width: 20%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.shelf-wrapper {
+  display: flex;
+  width: 80%;
+  gap: 20px;
+}
+
+.shelf-wrapper .unread-book,
+.shelf-wrapper .readed-book {
+  width: 50%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.form {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  height: 340px;
 }
 
 .input-field {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .input-field label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .input-field input[type="text"],
 .input-field input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
 }
 
 .checkbox-field {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .checkbox-field input[type="checkbox"] {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #6c5ce7;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    float: right;
+  padding: 10px 20px;
+  background-color: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  float: right;
 }
 
 button[type="submit"]:hover {
-    background-color: #5245c9;
+  background-color: #5245c9;
 }
 
 .search-bar input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
 }
 
 .unread-card-container,
 .readed-card-container {
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    overflow-y: auto;
-    flex: 1;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
 }
 
 /* Custom Scrollbar Styling */
 .unread-card-container::-webkit-scrollbar,
 .readed-card-container::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 .unread-card-container::-webkit-scrollbar-track,
 .readed-card-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 .unread-card-container::-webkit-scrollbar-thumb,
 .readed-card-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 .unread-card-container::-webkit-scrollbar-thumb:hover,
 .readed-card-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 /* Firefox Scrollbar */
 .unread-card-container,
 .readed-card-container {
-    scrollbar-width: thin;
-    scrollbar-color: #6c5ce7 #f1f1f1;
+  scrollbar-width: thin;
+  scrollbar-color: #6c5ce7 #f1f1f1;
 }
 
 .card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .card-text {
-    flex-grow: 1;
-    padding-left: 10px;
+  flex-grow: 1;
+  padding-left: 10px;
 }
 
 .card h2 {
-    margin-bottom: 5px;
-    font-size: 20px;
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 
 .card p {
-    margin-bottom: 0;
-    color: #6c757d;
+  margin-bottom: 0;
+  color: #6c757d;
 }
 
 .custom-checkbox {
-    display: inline-block;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .custom-checkbox input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 .custom-checkbox label {
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
 }
 
-.custom-checkbox input[type="checkbox"]:checked+label {
-    background-color: #007bff;
-    border-color: #007bff;
+.custom-checkbox input[type="checkbox"]:checked + label {
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-.custom-checkbox input[type="checkbox"]:checked+label:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 6px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* action button */
 .edit-card {
-    width: 30px;
-    height: 30px;
-    background: url('assets/edit-3-svgrepo-com.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: auto;
-    cursor: pointer;
-    border: 1px solid white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 30px;
+  background: url("assets/edit-3-svgrepo-com.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: auto;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .delete-card {
-    width: 30px;
-    height: 30px;
-    background: url('assets/trash-bin-minimalistic-svgrepo-com.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: 16px;
-    cursor: pointer;
-    border: 1px solid white;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 30px;
+  background: url("assets/trash-bin-minimalistic-svgrepo-com.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 16px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .edit-card:hover,
 .delete-card:hover {
-    box-shadow: 2px 3px 6px rgba(108, 92, 231, 1);
+  box-shadow: 2px 3px 6px rgba(108, 92, 231, 1);
 }
 
 /* popup persetujuan delete data */
 .overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
-    z-index: 1000; /* Ensure overlay is on top */
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 300px;
-    width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
 .popup h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .popup button {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 #confirm-button {
-    background-color: red;
-    color: white;
-    border: none;
+  background-color: red;
+  color: white;
+  border: none;
 }
 
 #cancel-button {
-    background-color: grey;
-    color: white;
-    border: none;
+  background-color: grey;
+  color: white;
+  border: none;
+}
+
+/* toast notif */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toast {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+  position: relative;
+}
+
+.toast .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  transition: width linear;
+}
+
+.toast.fade-out {
+  opacity: 0;
+}
+
+.toast.success {
+  background-color: #4caf50;
+}
+
+.toast.warning {
+  background-color: #ffc107;
+}
+
+.toast.error {
+  background-color: #f44336;
 }
