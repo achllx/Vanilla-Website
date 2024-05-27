@@ -10,351 +10,351 @@ const STORAGE_KEY = "BOOK-LIST"; //key local storage
 const progressBar = document.querySelector(".progress-bar"); // element progress bar
 
 document.addEventListener("DOMContentLoaded", () => {
-  const submitForm = document.getElementById("book-form");
+    const submitForm = document.getElementById("book-form");
 
-  document
-    .getElementById("unread-card-container")
-    .addEventListener("change", checkboxHandler);
+    document
+        .getElementById("unread-card-container")
+        .addEventListener("change", checkboxHandler);
 
-  document
-    .getElementById("readed-card-container")
-    .addEventListener("change", checkboxHandler);
+    document
+        .getElementById("readed-card-container")
+        .addEventListener("change", checkboxHandler);
 
-  if (isStorageExist()) {
-    loadDataFromStorage();
-  }
+    if (isStorageExist()) {
+        loadDataFromStorage();
+    }
 
-  widgetHandler();
+    widgetHandler();
 
-  document.getElementById("unread-search").addEventListener("input", () => {
-    searchBooks(false);
-  });
+    document.getElementById("unread-search").addEventListener("input", () => {
+        searchBooks(false);
+    });
 
-  document.getElementById("readed-search").addEventListener("input", () => {
-    searchBooks(true);
-  });
+    document.getElementById("readed-search").addEventListener("input", () => {
+        searchBooks(true);
+    });
 
-  submitForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    submitForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    addBook();
+        addBook();
 
-    document.getElementById("book-title").value = "";
-    document.getElementById("book-author").value = "";
-    document.getElementById("book-year").value = "";
-    document.getElementById("book-check").checked = false;
-  });
+        document.getElementById("book-title").value = "";
+        document.getElementById("book-author").value = "";
+        document.getElementById("book-year").value = "";
+        document.getElementById("book-check").checked = false;
+    });
 });
 
 // render buku
 document.addEventListener(RENDER_EVENT, () => {
-  readed = books.filter((book) => book.isComplete);
-  unread = books.filter((book) => !book.isComplete);
+    readed = books.filter((book) => book.isComplete);
+    unread = books.filter((book) => !book.isComplete);
 
-  const checkReadedSearch = document
-    .getElementById("readed-search")
-    .value.toLowerCase();
+    const checkReadedSearch = document
+        .getElementById("readed-search")
+        .value.toLowerCase();
 
-  const checkUnreadSearch = document
-    .getElementById("unread-search")
-    .value.toLowerCase();
+    const checkUnreadSearch = document
+        .getElementById("unread-search")
+        .value.toLowerCase();
 
-  if (checkReadedSearch !== "" || checkReadedSearch !== null) {
-    searchBooks(true);
-  } else {
-    renderReadedBooks();
-  }
+    if (checkReadedSearch !== "" || checkReadedSearch !== null) {
+        searchBooks(true);
+    } else {
+        renderReadedBooks();
+    }
 
-  if (checkUnreadSearch !== "" || checkUnreadSearch !== null) {
-    searchBooks(false);
-  } else {
-    renderUnreadBooks();
-  }
+    if (checkUnreadSearch !== "" || checkUnreadSearch !== null) {
+        searchBooks(false);
+    } else {
+        renderUnreadBooks();
+    }
 
-  widgetHandler();
+    widgetHandler();
 });
 
 function renderReadedBooks(filteredBooks = null) {
-  const readedCardContainer = document.getElementById("readed-card-container");
+    const readedCardContainer = document.getElementById("readed-card-container");
 
-  readedCardContainer.innerHTML = "";
+    readedCardContainer.innerHTML = "";
 
-  const booksToRender = filteredBooks || readed;
+    const booksToRender = filteredBooks || readed;
 
-  for (const book of booksToRender) {
-    const newCard = createBookCard(book);
-    readedCardContainer.append(newCard);
-  }
+    for (const book of booksToRender) {
+        const newCard = createBookCard(book);
+        readedCardContainer.append(newCard);
+    }
 }
 
 function renderUnreadBooks(filteredBooks = null) {
-  const unreadCardContainer = document.getElementById("unread-card-container");
+    const unreadCardContainer = document.getElementById("unread-card-container");
 
-  unreadCardContainer.innerHTML = "";
+    unreadCardContainer.innerHTML = "";
 
-  const booksToRender = filteredBooks || unread;
+    const booksToRender = filteredBooks || unread;
 
-  for (const book of booksToRender) {
-    const newCard = createBookCard(book);
-    unreadCardContainer.append(newCard);
-  }
+    for (const book of booksToRender) {
+        const newCard = createBookCard(book);
+        unreadCardContainer.append(newCard);
+    }
 }
 
 // fungsi pencarian untuk 2 kategori rak buku
 function searchBooks(isComplete) {
-  const searchInput = isComplete
-    ? document.getElementById("readed-search").value.toLowerCase()
-    : document.getElementById("unread-search").value.toLowerCase();
+    const searchInput = isComplete
+        ? document.getElementById("readed-search").value.toLowerCase()
+        : document.getElementById("unread-search").value.toLowerCase();
 
-  if (isComplete) {
-    const filteredBooks = readed.filter((book) => {
-      return book.title.toLowerCase().includes(searchInput);
-    });
-    renderReadedBooks(filteredBooks);
-  } else {
-    const filteredBooks = unread.filter((book) => {
-      return book.title.toLowerCase().includes(searchInput);
-    });
-    renderUnreadBooks(filteredBooks);
-  }
+    if (isComplete) {
+        const filteredBooks = readed.filter((book) => {
+            return book.title.toLowerCase().includes(searchInput);
+        });
+        renderReadedBooks(filteredBooks);
+    } else {
+        const filteredBooks = unread.filter((book) => {
+            return book.title.toLowerCase().includes(searchInput);
+        });
+        renderUnreadBooks(filteredBooks);
+    }
 }
 
 // generate id
 function generateId() {
-  return +new Date();
+    return +new Date();
 }
 
 // pembuatan bentuk object buku
 function generateBookObject(id, title, author, year, isComplete) {
-  return {
-    id,
-    title,
-    author,
-    year,
-    isComplete,
-  };
+    return {
+        id,
+        title,
+        author,
+        year,
+        isComplete,
+    };
 }
 
 // handler checkbox
 function checkboxHandler(event) {
-  if (event.target.type === "checkbox") {
-    if (event.target.checked) {
-      addBookToReaded(event.target.id);
-    } else {
-      undoBookFromReaded(event.target.id);
+    if (event.target.type === "checkbox") {
+        if (event.target.checked) {
+            addBookToReaded(event.target.id);
+        } else {
+            undoBookFromReaded(event.target.id);
+        }
     }
-  }
 }
 
 // handler untuk widgets
 function widgetHandler() {
-  const totalBooks = books.length;
-  const completeBooks = books.filter((book) => book.isComplete).length;
-  const incompleteBooks = books.filter((book) => !book.isComplete).length;
+    const totalBooks = books.length;
+    const completeBooks = books.filter((book) => book.isComplete).length;
+    const incompleteBooks = books.filter((book) => !book.isComplete).length;
 
-  document.getElementById("total-book").innerText = totalBooks;
-  document.getElementById("unread-total").innerText = incompleteBooks;
-  document.getElementById("readed-total").innerText = completeBooks;
+    document.getElementById("total-book").innerText = totalBooks;
+    document.getElementById("unread-total").innerText = incompleteBooks;
+    document.getElementById("readed-total").innerText = completeBooks;
 
-  if (totalBooks !== 0) {
-    setProgressValue(progressBar, completeBooks / totalBooks);
-  } else {
-    setProgressValue(progressBar);
-  }
+    if (totalBooks !== 0) {
+        setProgressValue(progressBar, completeBooks / totalBooks);
+    } else {
+        setProgressValue(progressBar);
+    }
 }
 
 // fungsi mencari data buku dengan id
 function findBook(bookId) {
-  for (const book of books) {
-    if (book.id == bookId) {
-      return book;
+    for (const book of books) {
+        if (book.id == bookId) {
+            return book;
+        }
     }
-  }
-  return null;
+    return null;
 }
 
 // fungsi mencari index buku dengan id
 function findBookIndex(bookId) {
-  for (const index in books) {
-    if (books[index].id === bookId) {
-      return index;
+    for (const index in books) {
+        if (books[index].id === bookId) {
+            return index;
+        }
     }
-  }
 
-  return -1;
+    return -1;
 }
 
 // fungsi menambahkan buku
 function addBook() {
-  const title = document.getElementById("book-title").value;
-  const author = document.getElementById("book-author").value;
-  const year = document.getElementById("book-year").value;
-  const isComplete = document.getElementById("book-check").checked;
+    const title = document.getElementById("book-title").value;
+    const author = document.getElementById("book-author").value;
+    const year = parseInt(document.getElementById("book-year").value, 10);
+    const isComplete = document.getElementById("book-check").checked;
 
-  const bookObject = generateBookObject(
-    generateId(),
-    title,
-    author,
-    year,
-    isComplete
-  );
+    const bookObject = generateBookObject(
+        generateId(),
+        title,
+        author,
+        year,
+        isComplete
+    );
 
-  books.push(bookObject);
+    books.push(bookObject);
 
-  document.dispatchEvent(new Event(RENDER_EVENT));
+    document.dispatchEvent(new Event(RENDER_EVENT));
 
-  showToast("Buku ditambahkan", 3000, "success");
+    showToast("Buku ditambahkan", 3000, "success");
 
-  saveData();
+    saveData();
 }
 
 // membuat kartu untuk ditampilkan
 function createBookCard(bookObject) {
-  // card
-  const card = document.createElement("div");
-  card.classList.add("card");
+    // card
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-  // checkbox
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = bookObject.id;
-  checkbox.name = bookObject.id;
-  checkbox.checked = bookObject.isComplete;
+    // checkbox
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = bookObject.id;
+    checkbox.name = bookObject.id;
+    checkbox.checked = bookObject.isComplete;
 
-  const label = document.createElement("label");
-  label.htmlFor = bookObject.id;
+    const label = document.createElement("label");
+    label.htmlFor = bookObject.id;
 
-  const cardCheckbox = document.createElement("div");
-  cardCheckbox.classList.add("custom-checkbox");
-  cardCheckbox.append(checkbox, label);
+    const cardCheckbox = document.createElement("div");
+    cardCheckbox.classList.add("custom-checkbox");
+    cardCheckbox.append(checkbox, label);
 
-  // card text
-  const text = document.createElement("h2");
-  text.innerText = bookObject.title;
+    // card text
+    const text = document.createElement("h2");
+    text.innerText = bookObject.title;
 
-  const subText = document.createElement("p");
-  subText.innerText = `${bookObject.author}, ${bookObject.year}`;
+    const subText = document.createElement("p");
+    subText.innerText = `${bookObject.author}, ${bookObject.year}`;
 
-  const cardText = document.createElement("div");
-  cardText.classList.add("card-text");
-  cardText.append(text, subText);
+    const cardText = document.createElement("div");
+    cardText.classList.add("card-text");
+    cardText.append(text, subText);
 
-  // delete button
-  const deleteButton = document.createElement("div");
-  deleteButton.classList.add("delete-card");
-  deleteButton.addEventListener("click", () => {
-    removeBook(bookObject.id);
-  });
+    // delete button
+    const deleteButton = document.createElement("div");
+    deleteButton.classList.add("delete-card");
+    deleteButton.addEventListener("click", () => {
+        removeBook(bookObject.id);
+    });
 
-  card.append(cardCheckbox, cardText, deleteButton);
+    card.append(cardCheckbox, cardText, deleteButton);
 
-  // gabungkan card
-  return card;
+    // gabungkan card
+    return card;
 }
 
 // handler memindahkan buku dari rak belum selesai ke selesai
 function addBookToReaded(bookId) {
-  const bookTarget = findBook(bookId);
+    const bookTarget = findBook(bookId);
 
-  if (bookTarget == null) {
-    showToast("Buku tidak ditemukan", 3000, "error");
-    return;
-  }
+    if (bookTarget == null) {
+        showToast("Buku tidak ditemukan", 3000, "error");
+        return;
+    }
 
-  bookTarget.isComplete = true;
-  document.dispatchEvent(new Event(RENDER_EVENT));
+    bookTarget.isComplete = true;
+    document.dispatchEvent(new Event(RENDER_EVENT));
 
-  saveData();
+    saveData();
 }
 
 // handler memindahkan buku dari rak selesai ke belum selesai
 function undoBookFromReaded(bookId) {
-  const bookTarget = findBook(bookId);
+    const bookTarget = findBook(bookId);
 
-  if (bookTarget == null) {
-    showToast("Buku tidak ditemukan", 3000, "error");
-    return;
-  }
+    if (bookTarget == null) {
+        showToast("Buku tidak ditemukan", 3000, "error");
+        return;
+    }
 
-  bookTarget.isComplete = false;
-  document.dispatchEvent(new Event(RENDER_EVENT));
-  saveData();
+    bookTarget.isComplete = false;
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
 }
 
 // menghapus buku dari rak
 function removeBook(bookId) {
-  const bookTarget = findBookIndex(bookId);
-  const bookObject = findBook(bookId);
+    const bookTarget = findBookIndex(bookId);
+    const bookObject = findBook(bookId);
 
-  if (bookTarget === -1) {
-    showToast("Buku tidak ditemukan", 3000, "error");
-    return;
-  }
+    if (bookTarget === -1) {
+        showToast("Buku tidak ditemukan", 3000, "error");
+        return;
+    }
 
-  // munculkan popup
-  const popup = document.getElementById("overlay");
-  const confirmButton = document.getElementById("confirm-button");
-  const cancelButton = document.getElementById("cancel-button");
-  const confirmData = document.getElementById("confirm-data");
+    // munculkan popup
+    const popup = document.getElementById("overlay");
+    const confirmButton = document.getElementById("confirm-button");
+    const cancelButton = document.getElementById("cancel-button");
+    const confirmData = document.getElementById("confirm-data");
 
-  confirmData.innerHTML = `
+    confirmData.innerHTML = `
     <p> Apakah anda yakin untuk menghapus buku <b>"${bookObject.title}"</b>(<b>${bookObject.author}, ${bookObject.year}</b>)`;
 
-  popup.style.display = "flex";
+    popup.style.display = "flex";
 
-  // konfirmasi penghapusan buku
-  function confirmHandler() {
-    books.splice(bookTarget, 1);
-    document.dispatchEvent(new Event(RENDER_EVENT));
-    showToast("Buku dihapus", 3000, "error");
-    saveData();
-    popup.style.display = "none";
-    cleanup();
-  }
+    // konfirmasi penghapusan buku
+    function confirmHandler() {
+        books.splice(bookTarget, 1);
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        showToast("Buku dihapus", 3000, "error");
+        saveData();
+        popup.style.display = "none";
+        cleanup();
+    }
 
-  function cancelHandler() {
-    popup.style.display = "none";
-    cleanup();
-  }
+    function cancelHandler() {
+        popup.style.display = "none";
+        cleanup();
+    }
 
-  function cleanup() {
-    confirmButton.removeEventListener("click", confirmHandler);
-    cancelButton.removeEventListener("click", cancelHandler);
-  }
+    function cleanup() {
+        confirmButton.removeEventListener("click", confirmHandler);
+        cancelButton.removeEventListener("click", cancelHandler);
+    }
 
-  confirmButton.addEventListener("click", confirmHandler);
-  cancelButton.addEventListener("click", cancelHandler);
+    confirmButton.addEventListener("click", confirmHandler);
+    cancelButton.addEventListener("click", cancelHandler);
 }
 
 // fungsi menyimpan data ke dalam localstorage di webstorage
 function saveData() {
-  if (isStorageExist()) {
-    const parsed = JSON.stringify(books);
-    localStorage.setItem(STORAGE_KEY, parsed);
-    document.dispatchEvent(new Event(SAVED_EVENT));
-  }
+    if (isStorageExist()) {
+        const parsed = JSON.stringify(books);
+        localStorage.setItem(STORAGE_KEY, parsed);
+        document.dispatchEvent(new Event(SAVED_EVENT));
+    }
 }
 
 // fungsi pengecekan browser mendukun webstorage atau tidak
 function isStorageExist() {
-  if (typeof Storage === undefined) {
-    showToast("Broser kamu tidak mendukung local storage", 3000, "error");
-    return false;
-  }
+    if (typeof Storage === undefined) {
+        showToast("Broser kamu tidak mendukung local storage", 3000, "error");
+        return false;
+    }
 
-  return true;
+    return true;
 }
 
 // fungsi mengambil data dari localstorage
 function loadDataFromStorage() {
-  const serializedData = localStorage.getItem(STORAGE_KEY);
-  let data = JSON.parse(serializedData);
-
-  if (data !== null) {
-    for (const book of data) {
-      books.push(book);
+    const serializedData = localStorage.getItem(STORAGE_KEY);
+    let data = JSON.parse(serializedData);
+    if (data !== null) {
+        for (const book of data) {
+            book.year = parseInt(book.year, 10);
+            books.push(book);
+        }
     }
-  }
-
-  document.dispatchEvent(new Event(RENDER_EVENT));
+    console.log(books)
+    document.dispatchEvent(new Event(RENDER_EVENT));
 }

@@ -349,23 +349,10 @@ button[type="submit"]:hover {
 }
 
 /* action button */
-.edit-card {
-  width: 30px;
-  height: 30px;
-  background: url("assets/edit-3-svgrepo-com.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-left: auto;
-  cursor: pointer;
-  border: 1px solid white;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .delete-card {
   width: 30px;
   height: 30px;
-  background: url("assets/trash-bin-minimalistic-svgrepo-com.svg");
+  background: url("../assets/trash-bin-minimalistic-svgrepo-com.svg");
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 16px;
