@@ -355,6 +355,6 @@ function loadDataFromStorage() {
             books.push(book);
         }
     }
-    console.log(books)
+    
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
